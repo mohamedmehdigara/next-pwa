@@ -1,14 +1,14 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheets, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({});
 
 //server side rendering for material-ui https://material-ui.com/guides/server-rendering/
-export default class MyDocument extends Document {
+export default function MyDocument( {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="manifest" href="/manifest.json" />
@@ -22,10 +22,10 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
-}
+})
 
 MyDocument.getInitialProps = async ctx => {
   
